@@ -1,4 +1,13 @@
-boxPlot <- function(highlight = NULL){
+library(ggpubr)
+library(ggplot2)
+library(ggiraph)
+
+####################################################
+#functions
+
+boxPlot <- function(highlight = NULL,
+                    datBox, 
+                    datRes){
   if(is.null(highlight)){
     g <- ggplot() +
       annotate(geom = "text", label = "Type in you favorite gene in the bar above,\nor click on the plots below to explore a gene", x = .6,y = .5, size = 18) +
@@ -42,7 +51,7 @@ boxPlot <- function(highlight = NULL){
 exp2logFC <- function(aveExp,
                       logFC,
                       sig,
-                      Symbol = datMD$Symbol,
+                      Symbol,
                       title = "", 
                       xZoom = c(NA, NA),
                       yZoom = c(NA, NA),
@@ -85,3 +94,4 @@ girafize <- function(g){
              type = "single")
          ))
 }
+
